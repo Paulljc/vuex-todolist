@@ -21,7 +21,10 @@
           isCompleted: false,
           id: new Date().getTime(),
         };
-        this.$emit('createNewItem', this.newItem);
+        this.$store.commit({
+            type: 'createNewItem',
+            data: this.newItem
+          });
         this.content = '';
       }
     },

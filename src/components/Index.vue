@@ -4,13 +4,12 @@
       <div class="layout">
         <div class="title">{{ title }}</div>
         <div class="inner-content">
-          <content-input @createNewItem="createItem"></content-input>
+          <content-input></content-input>
           <ul v-if="(items.length !== 0)" :class="['items-list']">
             <content-list
               v-for="item in itemFilters"
               :item="item"
               :key="item.id"
-              @completeItem="completeItem"
               @deleteItem="deleteItem"
               @editItem="editItem"
             ></content-list>
@@ -63,13 +62,6 @@ export default {
     };
   },
   methods: {
-    createItem(item) {
-      this.$store.commit({
-            type: 'createNewItem',
-            data: item
-          });
-      this.status === "all" || this.status === "active" ? void 0 : (this.status = "all");
-    },
     completeItem(item) {
        this.$store.commit({
             type: 'completeItem',

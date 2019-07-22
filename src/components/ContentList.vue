@@ -25,7 +25,11 @@
     },
     methods: {
       completeItem(){
-        this.$emit('completeItem', this.item)
+        // this.$emit('completeItem', this.item)
+        this.$store.commit({
+            type: 'completeItem',
+            data: this.item
+          });
       },
       deleteItem(){
         this.$emit('deleteItem', this.item)
