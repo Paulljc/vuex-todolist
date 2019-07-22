@@ -9,6 +9,7 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     toDoList: [],
+    status: "all"
   },
   mutations: {
     initItems(state, payload){
@@ -33,6 +34,9 @@ const store = new Vuex.Store({
     },
     createNewItem(state, payload){
       state.toDoList.unshift(payload.data)
+    },
+    changeCategory(state, payload){
+      state.status = payload.data
     }
   }
 })

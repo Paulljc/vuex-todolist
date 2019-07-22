@@ -6,13 +6,9 @@
         <div class="inner-content">
           <content-input></content-input>
           <ul v-if="(items.length !== 0)" :class="['items-list']">
-            <content-list
-              v-for="item in itemFilters"
-              :item="item"
-              :key="item.id"
-            ></content-list>
+            <content-list v-for="item in itemFilters" :item="item" :key="item.id"></content-list>
           </ul>
-          <content-filter v-if="(items.length !== 0)" :status="status" @category="changeCategory"></content-filter>
+          <content-filter v-if="(items.length !== 0)"></content-filter>
         </div>
       </div>
     </div>
@@ -60,9 +56,6 @@ export default {
     };
   },
   methods: {
-    changeCategory(prop) {
-      this.status = prop;
-    },
     fetchData: function() {
       var self = this;
       axios.get(" https://www.easy-mock.com/mock/5d357e9e60bda6793c79785d/todolist")
@@ -80,7 +73,7 @@ export default {
   },
   computed: {
     itemFilters() {
-      return this.statusFilter[this.status](this.$store.state.toDoList);
+      return this.statusFilter[this.$store.state.status](this.$store.state.toDoList);
     }
   }
 };

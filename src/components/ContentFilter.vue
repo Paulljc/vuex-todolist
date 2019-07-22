@@ -10,21 +10,37 @@
 
 <script>
   export default{
-    props: ['status'],
+    computed:{
+      status(){
+        return this.$store.state.status
+      }
+    },
     methods: {
       category(index){
         switch (index) {
           case 0:
-            this.$emit('category', 'all');
+            this.$store.commit({
+              type: 'changeCategory',
+              data: 'all'
+            });
             break;
           case 1:
-            this.$emit('category', 'active');
+            this.$store.commit({
+              type: 'changeCategory',
+              data: 'active'
+            });
             break;
           case 2:
-            this.$emit('category', 'completed');
+            this.$store.commit({
+              type: 'changeCategory',
+              data: 'completed'
+            });
             break;
           default:
-            this.$emit('category', 'all')
+            this.$store.commit({
+              type: 'changeCategory',
+              data: 'all'
+            });
         }
       }
     }
