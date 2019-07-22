@@ -10,7 +10,6 @@
               v-for="item in itemFilters"
               :item="item"
               :key="item.id"
-              @deleteItem="deleteItem"
               @editItem="editItem"
             ></content-list>
           </ul>
@@ -62,18 +61,6 @@ export default {
     };
   },
   methods: {
-    completeItem(item) {
-       this.$store.commit({
-            type: 'completeItem',
-            data: item
-          });
-    },
-    deleteItem(item) {
-      this.$store.commit({
-            type: 'deleteItem',
-            data: item
-          });
-    },
     editItem(item) {
       item.item.content = item.newLabel;
       this.$store.commit({
