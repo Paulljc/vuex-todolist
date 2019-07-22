@@ -10,7 +10,6 @@
               v-for="item in itemFilters"
               :item="item"
               :key="item.id"
-              @editItem="editItem"
             ></content-list>
           </ul>
           <content-filter v-if="(items.length !== 0)" :status="status" @category="changeCategory"></content-filter>
@@ -61,13 +60,6 @@ export default {
     };
   },
   methods: {
-    editItem(item) {
-      item.item.content = item.newLabel;
-      this.$store.commit({
-            type: 'editItem',
-            data: item
-          });
-    },
     changeCategory(prop) {
       this.status = prop;
     },
@@ -86,14 +78,6 @@ export default {
         });
     }
   },
-  // watch: {
-  //   items: {
-  //     handler: function(items) {
-  //       Store.saveItems(items);
-  //     },
-  //     deep: true
-  //   }
-  // },
   computed: {
     itemFilters() {
       return this.statusFilter[this.status](this.$store.state.toDoList);

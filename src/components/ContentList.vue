@@ -41,7 +41,8 @@
       },
       completeEdit(){
         this.editing = false;
-        this.content !== '' ? this.$emit('editItem', {item: this.item, newLabel: this.content}) : this.cancelEdit
+        this.content !== '' ? this.$store.commit({ type: 'editItem', data: this.item.content = this.content})
+                            : this.cancelEdit
       },
       cancelEdit(){
         this.editing = false;
