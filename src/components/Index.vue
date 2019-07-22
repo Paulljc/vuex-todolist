@@ -36,7 +36,6 @@ export default {
       title: "Simple Todo List with adding and filter by diff status.",
       items: [],
       status: "all",
-      editing: false,
       statusFilter: {
         all(items) {
           return items;
